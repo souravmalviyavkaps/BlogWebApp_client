@@ -206,3 +206,128 @@ export const fetchCategoryById = async(id)=> {
         }
     }
 }
+
+export const getBlogById = async (id)=> {
+    try {
+        console.log("fLL", id)
+        const res = await axios.get(API_URLS.fetchBlogById(id));
+        
+        console.log(res)
+        if(res.data.success){
+            return {
+                success: true,
+                data: res.data,
+                message: 'Blog fetched successfully !!'
+            }
+        }
+
+        throw new Error(res.message);
+    } catch (error) {
+        console.log(error.message);
+        return {
+            success: false,
+            message: error.message
+        }
+    }
+}
+
+export const updateBlog = async(id, body) => {
+    try {
+        const res = await axios.put(API_URLS.updateBlog(id), body, {
+            headers: {
+                Authorization: `Bearer ${Cookies.get('token')}`,
+                "Content-Type": 'multipart/form-data'
+            }
+        });
+        if(res.data.success){
+            return {
+                success: true,
+                message: 'Blog updated successfully !!',
+                data: res.data
+            }
+        }
+        throw new Error(res.message);
+    } catch (error) {
+        console.log('Error while updating blog : ', error);
+        return {
+            success: false,
+            message: error.message
+        }
+    }
+}
+
+export const deleteBlog = async (id)=> {
+    try {
+        console.log('id .......', id)
+        const res = await axios.delete(API_URLS.deleteBlog(id), {
+            headers: {
+                Authorization: `Bearer ${Cookies.get('token')}`,
+                "Content-Type": 'multipart/form-data'
+            }
+        });
+        if(res.data.success){
+            return {
+                success: true,
+                message: 'Blog deleted successfully !!',
+                data: res.data
+            }
+        }
+        throw new Error(res.message);
+    } catch (error) {
+        console.log('Error while deleting blog : ', error);
+        return {
+            success: false,
+            message: error.message
+        }
+    }
+}
+
+export const addCategory = async (body) => {
+    try {
+        const res = await axios.post(API_URLS.addCategory(), body, {
+            headers: {
+                Authorization: `Bearer ${Cookies.get('token')}`
+            }
+        })
+        console.log(res)
+        if(res.data.success){
+            return {
+                success: true,
+                message: 'Category added successfully !!',
+                data: res.data
+            }
+        }
+        throw new Error(res.message)
+    } catch (error) {
+        console.log('Error in adding category : ', error);
+        return {
+            success: false,
+            message: error.message
+        }
+    }
+}
+
+export const addUser = async (body)=> {
+    try {
+        const res = await axios.post(API_URLS.addUser(), body, {
+            headers: {
+                Authorization: `Bearer ${Cookies.get('token')}`
+            }
+        })
+        console.log(res)
+        if(res.data.success){
+            return {
+                success: true,
+                message: 'User added successfully !!',
+                data: res.data
+            }
+        }
+        throw new Error(res.message)
+    } catch (error) {
+        console.log('Error in adding user : ', error);
+        return {
+            success: false,
+            message: error.message
+        }
+    }
+}

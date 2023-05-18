@@ -19,10 +19,12 @@ export const API_URLS = {
 
     //blogs
     fetchBlogs: (limit)=> `${API_ROOT}/blogs?limit=${limit}`,
-    fetchBlogById: (id)=> `${API_ROOT}/blogs/details/:id`,
+    fetchBlogById: (id)=> `${API_ROOT}/blogs/details/${id}`,
     postBlog: ()=> `${API_ROOT}/blogs/post-blog`,
     fetchCategories: ()=> `${API_ROOT}/blogs/fetch-categories`,
-    fetchCategoryById: (id)=> `${API_ROOT}/blogs/fetch-category/${id}`
+    fetchCategoryById: (id)=> `${API_ROOT}/blogs/fetch-category/${id}`,
+    updateBlog: (id)=> `${API_ROOT}/blogs/update/${id}`,
+    deleteBlog: (id)=> `${API_ROOT}/blogs/delete/${id}`,
 
 
 

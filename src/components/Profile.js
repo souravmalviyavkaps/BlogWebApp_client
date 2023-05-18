@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useState } from 'react';
 import {updateProfile} from '../api'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const AdminProfile = () => {
 
@@ -25,9 +27,10 @@ const AdminProfile = () => {
     const res = await updateProfile(body);
     if(res.data.success){
       console.log("Profile updated successfully : ", res.message);
-
+      toast.success(res.message, {
+        position: toast.POSITION.TOP_RIGHT
+      })
     }
-
 
   }
 
@@ -36,6 +39,7 @@ const AdminProfile = () => {
   return (
     <>
       {/* HEADER */}
+      <ToastContainer/>
       <header id="main-header" className="py-2 bg-primary text-white">
         <div className="container">
           <div className="row">

@@ -68,7 +68,7 @@ const UsersList = () => {
                         {users.map((user, index)=>{
                             <tr>
                             <td>{index}</td>
-                            <td>John Doe</td>
+                            <td>{user.fname + " " + user.lname}</td>
                             <td>jdoe@gmail.com</td>
                             <td>
                               <a href="details.html" className="btn btn-secondary">

@@ -81,7 +81,7 @@ const AdminHome = () => {
                 className="btn btn-primary btn-block"
                 data-toggle="modal"
                 data-target="#addPostModal">
-                <i className="fas fa-plus" /> Add Post
+                <i className="fas fa-plus" /> Add Blog
               </Link>
             </div>
             <div className="col-md-3">
@@ -134,7 +134,7 @@ const AdminHome = () => {
                             <td>{blog.category.catName}</td>
                             <td>{new Date((blog.createdAt)).toLocaleDateString("en-US", {day: 'numeric', month: 'long', year: 'numeric'})}</td>
                             <td>
-                              <Link to="/details" className="btn btn-secondary">
+                              <Link to={`/blogs/view-details/${blog._id}`} className="btn btn-secondary">
                                 <i className="fas fa-angle-double-right" />{' '}
                                 Details
                               </Link>
@@ -150,7 +150,7 @@ const AdminHome = () => {
             <div className="col-md-3">
               <div className="card text-center bg-primary text-white mb-3">
                 <div className="card-body">
-                  <h3>Posts</h3>
+                  <h3>Blogs</h3>
                   <h4 className="display-4">
                     <i className="fas fa-pencil-alt" /> {blogs.length}
                   </h4>

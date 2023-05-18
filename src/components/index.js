@@ -1,7 +1,6 @@
 import Home from "./Home";
 import AdminHome from "./AdminHome";
 import Navbar from "./Navbar";
-import Details from './Details'
 import Categories from './Categories';
 import Login from "./Login";
 import Register from './Register';
@@ -10,13 +9,13 @@ import Settings from './Settings';
 import UsersList from "./UsersList";
 import Blogs from "./Blogs";
 import CategoryDetail from "./CategoryDetail";
+import BlogDetails from "./BlogDetails";
 
 
 export {
     Home, 
     AdminHome,
     Navbar, 
-    Details,
     Categories,
     Login,
     Register,
@@ -24,5 +23,6 @@ export {
     Profile,
     UsersList,
     Blogs,
-    CategoryDetail
+    CategoryDetail,
+    BlogDetails
 }

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCategories, postBlog } from '../../api'
+import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 const AddPost = () => {
   const [categories, setCategories] = useState([])
@@ -7,6 +9,7 @@ const AddPost = () => {
   const [body, setBody] = useState('')
   const [img, setImg] = useState(null)
   const [category, setCategory] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getCategories = async () => {
@@ -25,6 +28,7 @@ const AddPost = () => {
       title, category, body, img
     });
     console.log(res);
+    
   }
 
   return (

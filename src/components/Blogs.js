@@ -61,7 +61,7 @@ const Blogs = () => {
                     </td>
                     <td>
                       <Link
-                        to="/edit-blog/{blog.id}"
+                        to={'/blogs/view-details/'+blog._id}
                         className="btn btn-secondary">
                         <i className="fas fa-angle-double-right" /> Edit
                       </Link>

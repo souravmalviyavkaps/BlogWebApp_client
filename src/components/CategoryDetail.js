@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {fetchCategoryById} from '../api'
+import Cookies from "js-cookie";
 
 const CategoryDetail = ()=>{
 
+    let user;
+    if(Cookies.get('user')){
+      user = JSON.parse(Cookies.get('user'));
+    }
+
     const {categoryId} = useParams();
-    // console.log(categoryId)
+    console.log("Hellos", categoryId)
+
     const [blogs, setBlogs] = useState([])
     useEffect(()=>{
         const getCategoryById = async(id)=> {
@@ -54,11 +61,16 @@ const CategoryDetail = ()=>{
                       </Link>
                     </td>
                     <td>
-                      <Link
-                        to="/edit-blog/{blog.id}"
-                        className="btn btn-secondary">
-                        <i className="fas fa-angle-double-right" /> Edit
-                      </Link>
+                      
+                      {
+                        user.role == 'admin' || user._id == blog._id ? 
+                        <Link
+                          to="/edit-blog/{blog.id}"
+                          className="btn btn-secondary">
+                          <i className="fas fa-angle-double-right" /> Edit
+                        </Link>
+                        : ""
+                      }
                     </td>
                   </tr>
                 </>

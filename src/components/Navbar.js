@@ -39,8 +39,8 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item px-2">
-                  <Link to="/posts" className="nav-link">
-                    Posts
+                  <Link to="/blogs" className="nav-link">
+                    Blogs
                   </Link>
                 </li>
                 <li className="nav-item px-2">
@@ -49,7 +49,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item px-2">
-                  <Link to="users.html" className="nav-link">
+                  <Link to="/admin/users" className="nav-link">
                     Users
                   </Link>
                 </li>
@@ -71,7 +71,7 @@ const Navbar = () => {
                     </div>
                   </li>
                   <li className="nav-item">
-                    <Link to="/" className="nav-link">
+                    <Link to="#" className="nav-link" onClick={handleLogout }>
                       <i className="fas fa-user-times" /> Logout
                     </Link>
                   </li>
@@ -80,8 +80,8 @@ const Navbar = () => {
             ) : user ? (
               <>
                 <li className="nav-item px-2">
-                  <Link to="/posts" className="nav-link">
-                    Posts
+                  <Link to="/blogs" className="nav-link">
+                    Blogs
                   </Link>
                 </li>
                 <ul className="navbar-nav ml-auto">

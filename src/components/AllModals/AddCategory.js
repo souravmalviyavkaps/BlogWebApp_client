@@ -1,7 +1,18 @@
+import { useState } from "react";
+import { addCategory } from "../../api";
+
 const AddCategory = () => {
 
-  const handleSubmit = ()=>{
-    
+  const [title, setTitle] = useState();
+  
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    const body = {
+      catName: title
+    }
+    const res = await addCategory(body);
+    console.log(res)
+
   }
 
   return (
@@ -15,15 +26,15 @@ const AddCategory = () => {
             </button>
           </div>
           <div className="modal-body">
-            <form onSubmit={handleSubmit}>
+            <form>
               <div className="form-group">
                 <label htmlFor="title">Title</label>
-                <input type="text" className="form-control" />
+                <input type="text" className="form-control" onChange={(e)=> setTitle(e.target.value)} />
               </div>
             </form>
           </div>
           <div className="modal-footer">
-            <button className="btn btn-success" data-dismiss="modal">
+            <button className="btn btn-success" data-dismiss="modal"  onClick={handleSubmit}>
               Add Category
             </button>
           </div>

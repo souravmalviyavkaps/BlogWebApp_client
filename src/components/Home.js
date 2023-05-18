@@ -12,10 +12,12 @@ const Home = () => {
   const [blogs, setBlogs] = useState([])
   const [categories, setCategories] = useState([])
   const navigate = useNavigate()
+  let user;
+  if(Cookies.get('user')) user = JSON.parse(Cookies.get('user'));
 
   useEffect(() => {
-    if (!Cookies.get('token')) {
-      navigate('/login')
+    if(user && user.role === 'admin'){
+      navigate('/admin');
     }
 
     const getAllBlogs = async () => {
@@ -116,7 +118,7 @@ const Home = () => {
                               )}
                             </td>
                             <td>
-                              <Link to="/details" className="btn btn-secondary">
+                              <Link to={`/blogs/view-details/${blog._id}`} className="btn btn-secondary">
                                 <i className="fas fa-angle-double-right" />{' '}
                                 Details
                               </Link>
