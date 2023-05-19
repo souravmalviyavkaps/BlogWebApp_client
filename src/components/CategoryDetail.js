@@ -35,7 +35,6 @@ const CategoryDetail = ()=>{
             <tr>
               <th>#</th>
               <th>Title</th>
-              <th>Category</th>
               <th>Date</th>
               <th />
             </tr>
@@ -56,7 +55,7 @@ const CategoryDetail = ()=>{
                       })}
                     </td>
                     <td>
-                      <Link to="/details" className="btn btn-secondary">
+                      <Link to={"/blogs/view-details/"+blog._id} className="btn btn-secondary">
                         <i className="fas fa-angle-double-right" /> Details
                       </Link>
                     </td>
@@ -65,7 +64,7 @@ const CategoryDetail = ()=>{
                       {
                         user.role == 'admin' || user._id == blog._id ? 
                         <Link
-                          to="/edit-blog/{blog.id}"
+                          to={`/blogs/edit-details/${blog._id}`}
                           className="btn btn-secondary">
                           <i className="fas fa-angle-double-right" /> Edit
                         </Link>

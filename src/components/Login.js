@@ -1,16 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { login } from '../api';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Login = ()=>{
     const navigate = useNavigate();
     const [loggingIn, setLoggingIn] = useState(false);
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+
+    useEffect(()=>{
+        if(Cookies.get('user')){
+            const user = JSON.parse(Cookies.get('user'));
+            if(user.role == 'admin'){
+                navigate('/admin')
+            }
+            navigate('/')
+        }
+    }, [])
 
     const handleSubmit = async (e)=>{
         e.preventDefault();

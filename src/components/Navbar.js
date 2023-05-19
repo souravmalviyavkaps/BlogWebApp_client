@@ -9,11 +9,11 @@ const Navbar = () => {
   if (Cookies.get('user')) {
     user = JSON.parse(Cookies.get('user'))
   }
-  const handleLogout = e => {
+  const handleLogout = async e => {
     e.preventDefault();
-    Cookies.remove('user');
-    Cookies.remove('token');
-    navigate('/');
+    await Cookies.remove('user');
+    await Cookies.remove('token');
+    navigate('/login');
   }
 
   return (
@@ -71,7 +71,7 @@ const Navbar = () => {
                     </div>
                   </li>
                   <li className="nav-item">
-                    <Link to="#" className="nav-link" onClick={handleLogout }>
+                    <Link className="nav-link" onClick={handleLogout}>
                       <i className="fas fa-user-times" /> Logout
                     </Link>
                   </li>

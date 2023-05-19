@@ -28,24 +28,7 @@ const Categories = () => {
           </div>
         </div>
       </header>
-      <section id="search" className="py-4 mb-4 bg-light">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 ml-auto">
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search Categories..."
-                />
-                <div className="input-group-append">
-                  <button className="btn btn-success">Search</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
       <section id="categories">
         <div className="container">
           <div className="row">

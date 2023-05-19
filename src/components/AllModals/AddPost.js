@@ -27,7 +27,14 @@ const AddPost = () => {
     const res = await postBlog({
       title, category, body, img
     });
-    console.log(res);
+    
+    if(! res.success){
+      console.log(res)
+      if(res.message == 'User not eligible !!'){
+        navigate('/payment');
+        console.log('Please upgrade to premium plan for posting more than 5 blogs !!')
+      }
+    }
     
   }
 

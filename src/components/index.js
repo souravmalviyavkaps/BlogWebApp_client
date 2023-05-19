@@ -10,7 +10,11 @@ import UsersList from "./UsersList";
 import Blogs from "./Blogs";
 import CategoryDetail from "./CategoryDetail";
 import BlogDetails from "./BlogDetails";
-
+import ViewBlogDetails from "./ViewBlogDetails";
+import OtherProfile from './OtherProfile';
+import PaymentPage from './PaymentPage';
+import CheckoutSuccess from "./CheckoutSuccess";
+import NotFound from './NotFound';
 
 export {
     Home, 
@@ -21,8 +25,13 @@ export {
     Register,
     Settings,
     Profile,
+    OtherProfile,
     UsersList,
     Blogs,
     CategoryDetail,
-    BlogDetails
+    BlogDetails,
+    ViewBlogDetails,
+    PaymentPage,
+    CheckoutSuccess,
+    NotFound
 }

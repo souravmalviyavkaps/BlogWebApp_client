@@ -8,6 +8,7 @@ export const API_URLS = {
     create: ()=> `${API_ROOT}/users/create`,
     createSession: ()=> `${API_ROOT}/users/create-session`,
     profile: ()=> `${API_ROOT}/users/profile`,
+    fetchUserById: (id) => `${API_ROOT}/users/get-user/${id}`,
 
     //admin
     addBlog: ()=> `${API_ROOT}/admin/add-blog`,
@@ -15,7 +16,7 @@ export const API_URLS = {
     addUser: ()=> `${API_ROOT}/admin/add-user`,
     addCategory: ()=> `${API_ROOT}/admin/add-category`,
     fetchUsers: ()=> `${API_ROOT}/admin/fetch-users`,
-    
+    updateUser: (id)=> `${API_ROOT}/admin/update-user/${id}`,
 
     //blogs
     fetchBlogs: (limit)=> `${API_ROOT}/blogs?limit=${limit}`,

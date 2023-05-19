@@ -166,6 +166,7 @@ export const postBlog = async(body)=>{
             }
         });
         console.log('api called')
+        console.log(res.data)
         if(res.data.success){
             return {
                 success: true,
@@ -173,7 +174,7 @@ export const postBlog = async(body)=>{
                 message: 'Blog posted successfully !!'
             }
         }
-        throw new Error(res.message);
+        throw new Error(res.data.message);
     } catch (error) {
         console.log('Error while posting blog : ', error);
         return {
@@ -325,6 +326,57 @@ export const addUser = async (body)=> {
         throw new Error(res.message)
     } catch (error) {
         console.log('Error in adding user : ', error);
+        return {
+            success: false,
+            message: error.message
+        }
+    }
+}
+
+export const getUserById = async (id)=> {
+    try {
+        const res = await axios.get(API_URLS.fetchUserById(id), {
+            headers: {
+                Authorization: `Bearer ${Cookies.get('token')}`
+            }
+        })
+
+        if(res.data.success){
+            return {
+                success: true,
+                data: res.data,
+                message: 'User fetched successfully'
+            }
+        }
+
+        throw new Error(res.message);
+    } catch (error) {
+        console.log('Error while fetching user : ', error);
+        return {
+            message: error.message,
+            success: false
+        }
+    }
+}
+
+export const updateUserById = async (id, body)=> {
+    try {
+        const res = await axios.put(API_URLS.updateUser(id), body, {
+            headers: {
+                Authorization: `Bearer ${Cookies.get('token')}`
+            }
+        });
+        if(res.data.success){
+            return {
+                success: true,
+                message: 'User updated successfully !!',
+                data: res.data
+            }
+        }
+        throw new Error(res.message);
+
+    } catch (error) {
+        console.log('Error while updating user data : ', error);
         return {
             success: false,
             message: error.message

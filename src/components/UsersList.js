@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react'
 import { fetchUsers } from '../api'
+import { Link } from 'react-router-dom'
 
 const UsersList = () => {
   const [users, setUsers] = useState([])
   useEffect(() => {
+
     const getAllUsers = async () => {
       const data = await fetchUsers()
       console.log('Users list : ', data.data)
-      setUsers(data.data)
+      await setUsers(data.data)
     }
     getAllUsers()
   }, [])
+
+  
 
   return (
     <>
@@ -28,7 +32,7 @@ const UsersList = () => {
           </div>
         </header>
         {/* SEARCH */}
-        <section id="search" className="py-4 mb-4 bg-light">
+        {/* <section id="search" className="py-4 mb-4 bg-light">
           <div className="container">
             <div className="row">
               <div className="col-md-6 ml-auto">
@@ -37,6 +41,7 @@ const UsersList = () => {
                     type="text"
                     className="form-control"
                     placeholder="Search Users..."
+                    onChange={handleSearch}
                   />
                   <div className="input-group-append">
                     <button className="btn btn-warning">Search</button>
@@ -45,7 +50,7 @@ const UsersList = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* USERS */}
         <section id="users">
           <div className="container">
@@ -66,16 +71,21 @@ const UsersList = () => {
                     </thead>
                     <tbody>
                         {users.map((user, index)=>{
-                            <tr>
+                          return (
+                            <>
+                              <tr>
                             <td>{index}</td>
                             <td>{user.fname + " " + user.lname}</td>
-                            <td>jdoe@gmail.com</td>
+                            <td>{user.email}</td>
                             <td>
-                              <a href="details.html" className="btn btn-secondary">
+                              <Link to={'/users/other-user/'+user._id} className="btn btn-secondary">
                                 <i className="fas fa-angle-double-right" /> Details
-                              </a>
+                              </Link>
                             </td>
                           </tr>
+                            </>
+                          )
+                            
                         })}
                     </tbody>
                   </table>

@@ -21,7 +21,7 @@ const Blogs = () => {
       console.log('Blogs list : ', blogs)
     }
     getAllBlogs()
-  }, [])
+  }, blogs)
 
   return (
     <div>
@@ -55,13 +55,13 @@ const Blogs = () => {
                       })}
                     </td>
                     <td>
-                      <Link to="/details" className="btn btn-secondary">
+                      <Link to= {"/blogs/view-details/ "+blog._id} className="btn btn-secondary">
                         <i className="fas fa-angle-double-right" /> Details
                       </Link>
                     </td>
                     <td>
                       <Link
-                        to={'/blogs/view-details/'+blog._id}
+                        to={'/blogs/edit-details/'+blog._id}
                         className="btn btn-secondary">
                         <i className="fas fa-angle-double-right" /> Edit
                       </Link>
