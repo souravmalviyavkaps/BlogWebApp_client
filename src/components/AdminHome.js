@@ -154,7 +154,7 @@ const AdminHome = () => {
                   <h4 className="display-4">
                     <i className="fas fa-pencil-alt" /> {blogs.length}
                   </h4>
-                  <Link to="/posts" className="btn btn-outline-light btn-sm">
+                  <Link to="/blogs" className="btn btn-outline-light btn-sm">
                     View
                   </Link>
                 </div>

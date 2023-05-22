@@ -55,7 +55,7 @@ const Blogs = () => {
                       })}
                     </td>
                     <td>
-                      <Link to= {"/blogs/view-details/ "+blog._id} className="btn btn-secondary">
+                      <Link to= {"/blogs/view-details/"+blog._id} className="btn btn-secondary">
                         <i className="fas fa-angle-double-right" /> Details
                       </Link>
                     </td>

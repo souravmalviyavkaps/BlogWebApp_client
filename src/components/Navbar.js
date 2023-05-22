@@ -49,7 +49,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item px-2">
-                  <Link to="/admin/users" className="nav-link">
+                  <Link to="/admin/users-list" className="nav-link">
                     Users
                   </Link>
                 </li>

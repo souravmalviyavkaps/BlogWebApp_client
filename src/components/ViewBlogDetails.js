@@ -8,12 +8,14 @@ const ViewBlogDetails = () => {
   const { id } = useParams()
   const [blog, setBlog] = useState({})
   const [userData, setUserData] = useState({})
+  const [category, setCategory] = useState({});
 
   useEffect(() => {
     const fetchBlogById = async id => {
       const res = await getBlogById(id)
       console.log(res.data.data)
       setBlog(res.data.data)
+      setCategory(res.data.data.category);
     }
     fetchBlogById(id)
 
@@ -22,6 +24,8 @@ const ViewBlogDetails = () => {
       setUserData(user)
       console.log('user', user)
     }
+
+    console.log(blog)
   }, [])
 
   return (
@@ -62,6 +66,8 @@ const ViewBlogDetails = () => {
           style={styles.image}
         />
       </div>
+
+      <h3>Category : {category.catName}</h3>
 
       <div
         style={{

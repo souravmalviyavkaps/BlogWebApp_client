@@ -8,8 +8,10 @@ const PaymentPage = ()=> {
     const handleSubmit = async(e)=> {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:8002/payment/create-checkout-session', {
-            user: (JSON.parse(Cookies.get('user')))._id
+            const res = await axios.post('http://localhost:8002/payment/create-checkout-session', {}, {
+                headers: {
+                    Authorization: `Bearer ${Cookies.get('token')}`
+                }
             });
 
             if(res.data.url){

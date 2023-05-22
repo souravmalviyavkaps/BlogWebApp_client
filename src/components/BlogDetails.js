@@ -12,8 +12,16 @@ if (Cookies.get('user')) {
 const BlogDetails = () => {
   const { id } = useParams()
 
-  useEffect(() => {
+  const [blog, setBlog] = useState({})
+  const [categories, setCategories] = useState([])
+  const navigate = useNavigate()
+  //form change
+  const [title, setTitle] = useState('')
+  const [category, setCategory] = useState('')
+  const [img, setImg] = useState(null)
+  const [body, setBody] = useState('')
 
+  useEffect(() => {
     console.log(id)
     const fetchBlogById = async id => {
       const res = await getBlogById(id)
@@ -33,22 +41,12 @@ const BlogDetails = () => {
       console.log('category :  ', res.data)
     }
     getAllCategories()
+  }, [blog]);
 
-  }, [])
-
-  const [blog, setBlog] = useState({})
-  const [categories, setCategories] = useState([])
-  const navigate = useNavigate()
-  //form change
-  const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('')
-  const [img, setImg] = useState(null)
-  const [body, setBody] = useState('')
-
-  const handleChange = async (e, blogId) => {
+  const handleChange = async e => {
     e.preventDefault()
     // console.log(title, body, img, category)
-    const id = blogId
+    const id = blog._id
     const dataToUpdate = {
       title,
       body,
@@ -62,7 +60,7 @@ const BlogDetails = () => {
 
   const handleDelete = async e => {
     e.preventDefault()
-    const id = e.target.id
+    const id = blog._id
     const res = await deleteBlog(id)
 
     if (res.data.success) {
@@ -103,18 +101,16 @@ const BlogDetails = () => {
             <div className="col-md-3">
               <Link
                 to="#"
-                onClick={(e)=> {handleChange(e, blog._id)}}
-                className="btn btn-success btn-block"
-              >
+                onClick={handleChange}
+                className="btn btn-success btn-block">
                 <i className="fas fa-check" /> Save Changes
               </Link>
             </div>
-            {blog.user == user._id || user.role == 'admin' ? (
+            {user && blog.user === user._id || user.role === 'admin' ? (
               <div className="col-md-3">
                 <Link
                   to="#"
                   className="btn btn-danger btn-block"
-                  id={blog._id}
                   onClick={handleDelete}>
                   <i className="fas fa-trash" /> Delete Post
                 </Link>
